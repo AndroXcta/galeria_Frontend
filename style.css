@@ -1,0 +1,45 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+}
+
+img {
+  width: inherit;
+  height: inherit;
+}
+
+body {
+  color: rgb(255, 255, 255);
+  background-image:url(./public/fondo.jpg);
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.imagen {
+  width: 40px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  border-radius: 20px;
+}
+
+.containerOne {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+
+}
