@@ -2,42 +2,77 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./public/alj_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="./menu.css">
   </head>
   <body>
     <header>
       <div class="containerOne">
         <h1>Sakura Spectrum: El Refugio del Arte Anime</h1>
         <div class="container">
-          <div class="hamburger"></div>
-          <div class="search">
+          <button class="hamburger hamburger--vortex " type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
             <input placeholder="Search the name" type="text">
             <div class="imagen">
               <img src="./public/lupa.png" alt="lupa">
-            </div>
           </div>
         </div>
       </div>
     </header>
     <main>
-      <div class="information">
-        <h2>Que es Sakura Spectrum</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quam perferendis illum nulla odio accusantium adipisci quasi magnam doloribus corrupti minima suscipit quibusdam possimus voluptas dicta, quod tenetur, ab itaque.
-          Adipisci ut deserunt possimus eius fugiat voluptas quam porro harum nobis, quidem nulla rem. Suscipit magnam, explicabo excepturi consequatur animi ullam rem delectus placeat in dolorum, facere ipsa laborum voluptates!
-        </p>
-      </div>
-      <div class="conatinerCard">
-        <img src="./public/dragon_ball.jpg" alt="">
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit numquam adipisci ipsum tempore in aliquid doloremque molestiae. Est harum ratione voluptatum animi nisi rem sed provident veritatis esse. Rem, laudantium!</p>
+      <nav>
+        <ul>
+          <li>
+            <a href="#Que_es_Sakura">Que es Sakura</a>
+          </li>
+          <li><a href="#cartas">cuadros</a>
+          </li>
+          <li><a href="#Crea_tu_propio cuadro">Crea tu propio cuadro</a>
+          </li>
+        </ul>
+      </nav>
+      <section id="Que_es_Sakura">
+        <div class="information">
+          <h2>Que es Sakura Spectrum</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quam perferendis illum nulla odio accusantium adipisci quasi magnam doloribus corrupti minima suscipit quibusdam possimus voluptas dicta, quod tenetur, ab itaque.
+            Adipisci ut deserunt possimus eius fugiat voluptas quam porro harum nobis, quidem nulla rem. Suscipit magnam, explicabo excepturi consequatur animi ullam rem delectus placeat in dolorum, facere ipsa laborum voluptates!
+          </p>
         </div>
-      </div>
+      </section>
+      <section id="cartas">
+        <div class="conatinerCard">
+          <img src="./public/dragon_ball.jpg" alt="">
+          <div class="content">
+            <p>aqui iria el nombre</p>
+            <p>aqui iria el estudio</p>
+            <p>aqui iria la besto waifu</p>
+          </div>
+        </div>
+      </section>
+      <section id="Crea tu_propio_cuadro">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis et, sed enim ut accusamus facere similique eaque quo beatae autem aliquam minus nemo iusto nihil. Neque nisi non fugit repellat.</p>
+        <a href="">click aqui para crear tu propio cuadro</a>
+      </section>
     </main>
     <footer>
-
+      <section id="Contactanos">
+        <p>gracias por llegar hasta el final </p>
+        <p>Sakura Spectrum 2023</p>
+        <p>creado por AndroXcta</p>
+        <div class="links">
+          <img src="./public/discord.svg" alt="discord">
+          <img src="./public/WhatsApp.svg" alt="whatsaap">
+          <img src="./public/Artstation.svg" alt="Artstation">
+          <a href="https://www.artstation.com/search/artists?sort_by=followers&query=androXcta" target="_blank"></a>
+          <a href="https://discord.gg/p6Jcwtsj" target="_blank"></a>
+        </div>
+      </section>
     </footer>
     <script type="module" src="/main.js"></script>
   </body>
