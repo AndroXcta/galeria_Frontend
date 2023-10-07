@@ -1,9 +1,9 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
 }
 
-html{
+html {
   scroll-behavior: smooth;
   transition-duration: 0.5s;
 }
@@ -25,13 +25,12 @@ p {
 body {
   padding: 10px;
   color: rgb(255, 255, 255);
-  background-image:url(./public/fondo.jpg);
+  background-image: url(./public/fondo.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
   background-size: cover;
-  
 }
 
 .information {
@@ -90,4 +89,15 @@ footer {
   width: 2rem;
   display: flex;
   flex-direction: row;
+}
+
+.links a {
+  width: inherit;
+  height: inherit;
+}
+
+#menu-icon,
+#menu-icon::after,
+#menu-icon::before {
+  background-color: rgb(255, 255, 255);
 }
