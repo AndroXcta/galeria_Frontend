@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Pixelify Sans', sans-serif;
 }
 
 html {
@@ -106,23 +107,34 @@ nav {
   transition: 0.5s ease-in-out;
 }
 
+ul{
+  list-style: none;
+}
+
+ol {
+  list-style: none;
+}
+
 .is-open {
   left: 0;
 }
 
 nav li {
   padding: 2rem;
+  display: inline-block;
 }
 
-nav a {
+nav li a {
   color: aliceblue;
   text-decoration-line: none;
-  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: scale(0);
 }
 
-nav a:hover {
+nav li a:hover {
   font-size: 2.3rem;
   color: rgb(105, 108, 112);
+  transform: scale(2);
 }
 
 .containerCard {
@@ -133,6 +145,12 @@ nav a:hover {
   background-color: black;
   border-radius: 0.5rem;
 }
+
+.containerCard:hover {
+  background-color: rgb(43, 42, 42);
+  
+}
+
 .imagen {
   
 }
@@ -216,7 +234,11 @@ form {
   align-items: center;
 }
 
-
+.click {
+  position: fixed;
+  z-index: 1002;
+  top: 1rem;
+}
 
 
 
@@ -241,16 +263,40 @@ form {
  .containerCard img {
   width: 16rem;
  }
+
+ .containerCard img:hover{
+   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+width: 17rem;
+ }
  .containerCard {
-  width: 18rem;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width:18rem;
+ }
+
+ .containerCard:hover{
+  width: 19rem;
  }
 
  #cartas {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem; */
  }
 
  .hamburger {
   display: none;
  }
+
+ .container{
+  display: flex;
+  justify-content: center;
+ }
+
+ footer{
+  margin-left: 16rem;
+ }
+
 }
