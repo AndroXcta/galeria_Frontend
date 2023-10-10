@@ -19,8 +19,20 @@ h1 {
   padding: 5px;
 }
 
+h2 {
+  color: white;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 p {
   padding: 10px;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 body {
@@ -34,10 +46,15 @@ body {
 }
 
 .information {
+  width: 95%;
+  padding: 10px;
+  background-color: black;
   margin: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  border-radius: 0.5rem;
 }
 
 .imagen {
@@ -74,7 +91,7 @@ nav {
   left: -16rem;
   top: 5.8rem;
   z-index: 800;
-  height: 100vh;
+  height: 85vh;
   padding: 20px;
   font-size: 2rem;
   width: 16rem;
@@ -108,7 +125,7 @@ nav a:hover {
   color: rgb(105, 108, 112);
 }
 
-.conatinerCard {
+.containerCard {
   margin: 0.5rem;
   padding: 0.9rem;
   display: flex;
@@ -116,7 +133,9 @@ nav a:hover {
   background-color: black;
   border-radius: 0.5rem;
 }
-
+.imagen {
+  
+}
 .content {
   display: flex;
   justify-content: space-around;
@@ -154,6 +173,10 @@ main {
   justify-content: space-around;
 }
 
+.in_active {
+  display: none;
+}
+
 .form button {
   color: #0037ff;
   padding: 4px 15px;
@@ -168,12 +191,66 @@ main {
 }
 
 form {
-  padding: 1rem;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  padding: 0.1rem 1rem 1rem 1rem ;
   display: flex;
   align-items: center;
   flex-direction: column;
   background: linear-gradient(90deg, #020024 3%, #041736 35%, #020024 98%);
   position: fixed;
-  top: 2.2rem;
+  top: 0.5rem;
   z-index: 1001;
+}
+
+#tu_propio_cuadro {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 0.5rem;
+  text-align: center;
+
+}
+
+#Contactanos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 600px) {
+  input {
+    padding: 0.6rem;
+  }
+  nav {
+    position: fixed;
+    left: 0;
+  }
+
+  .contenido {
+    margin-left: 16.5rem;
+  }
+  
+ .containerCard img {
+  width: 16rem;
+ }
+ .containerCard {
+  width: 18rem;
+ }
+
+ #cartas {
+  display: flex;
+  justify-content: center;
+ }
+
+ .hamburger {
+  display: none;
+ }
 }
