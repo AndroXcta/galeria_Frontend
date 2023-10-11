@@ -10,9 +10,12 @@ html {
   transition-duration: 0.5s;
 }
 
-img {
+img, h1, p, input {
   width: inherit;
   height: inherit;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 h1 {
@@ -24,16 +27,6 @@ h2 {
   color: white;
   margin-bottom: 1rem;
   margin-top: 1rem;
-}
-
-p {
-  padding: 10px;
-}
-
-input {
-  padding: 0;
-  margin: 0;
-  border: 0;
 }
 
 body {
@@ -62,8 +55,6 @@ body {
   width: 3.5rem;
 }
 
-header {
-}
 
 .containerOne {
   width: 100%;
@@ -107,11 +98,7 @@ nav {
   transition: 0.5s ease-in-out;
 }
 
-ul{
-  list-style: none;
-}
-
-ol {
+ul, ol {
   list-style: none;
 }
 
@@ -145,15 +132,20 @@ nav li a:hover {
   background-color: black;
   border-radius: 0.5rem;
 }
-
 .containerCard:hover {
   background-color: rgb(43, 42, 42);
-  
 }
 
-.imagen {
-  
+#btn-card {
+  top: 5.8rem;
+  left: 2rem;
+  box-shadow: 2px 3px 1px #151515;
+  width: 2rem;
+  height: 1.3rem;
+  position: fixed;
+  background-color: rgb(13, 42, 122);
 }
+
 .content {
   display: flex;
   justify-content: space-around;
@@ -176,9 +168,7 @@ footer {
   height: inherit;
 }
 
-#menu-icon,
-#menu-icon::after,
-#menu-icon::before {
+#menu-icon, #menu-icon::after, #menu-icon::before {
   background-color: rgb(255, 255, 255);
 }
 
@@ -208,7 +198,7 @@ main {
   color: #04144e;
 }
 
-form {
+#create {
   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   padding: 0.1rem 1rem 1rem 1rem ;
   display: flex;
@@ -225,7 +215,6 @@ form {
   background-color: rgb(0, 0, 0);
   border-radius: 0.5rem;
   text-align: center;
-
 }
 
 #Contactanos {
@@ -235,17 +224,47 @@ form {
 }
 
 .click {
+  height: 35rem;
+  display: flex;
+  align-items: center;
   position: fixed;
   z-index: 1002;
-  top: 1rem;
+  top: 5rem;
+
 }
 
+.click img {
+  width: 20rem;
+}
 
+.edit {
+display: flex;
+justify-content: center;
+transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
+}
 
+.off {
+  display: none;
+}
 
+#edit {
+  align-items: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  padding: 10px;
+  background-color: #151515;
+  top: 4rem;
+  position: fixed;
+  border-radius: 1rem;
 
+}
 
+#edit input {
+  margin: 10px;
+}
 
 @media (min-width: 600px) {
   input {
@@ -260,43 +279,39 @@ form {
     margin-left: 16.5rem;
   }
   
- .containerCard img {
-  width: 16rem;
- }
+  .containerCard img {
+    width: 16rem;
+  }
 
- .containerCard img:hover{
-   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-width: 17rem;
- }
- .containerCard {
-  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  width:18rem;
- }
+  .containerCard img:hover {
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 17rem;
+  }
+  .containerCard {
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 18rem;
+  }
 
- .containerCard:hover{
-  width: 19rem;
- }
+  .containerCard:hover {
+    width: 19rem;
+  }
 
- #cartas {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem; */
- }
+  #cartas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
- .hamburger {
-  display: none;
- }
+  .hamburger {
+    display: none;
+  }
 
- .container{
-  display: flex;
-  justify-content: center;
- }
+  .container {
+    display: flex;
+    justify-content: center;
+  }
 
- footer{
-  margin-left: 16rem;
- }
-
+  footer {
+    margin-left: 16rem;
+  }
 }

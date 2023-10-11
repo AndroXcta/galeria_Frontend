@@ -33,34 +33,20 @@ fetch(api)
     console.error('Error al obtener datos:', error);
   });
 
-
   const d = document;
   const botones = d.querySelectorAll(".containerCard");
+  const edit = d.querySelectorAll(".btn-card")
   
   botones.forEach(boton => {
     boton.addEventListener("click", () => {
       const instancias = d.querySelectorAll(".click");
-      instancias.forEach(instancia => instancia.classList.remove("click"));
-      
-      const div = d.createElement("div");
-      div.className = "click";
+      instancias.forEach(instancia => {
+        if (instancia !== boton) {
+          instancia.classList.remove("click");
+        }
+      });
   
-      if (!boton.classList.contains("click")) {
-        boton.classList.add("click");
-        document.body.appendChild(div);
-      }
+      boton.classList.toggle("click");
     });
   });
-
-  fetch("https://hobart-redback-xzed.2.ie-1.fl0.io")
-  .then (response => response.json)
-  .then(data => {
-    console.log(data)
-  })
-  .catch (error => {
-
-    console.error('error:', error)
-  })
-
-
-
+ 
