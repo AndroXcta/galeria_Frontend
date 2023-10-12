@@ -21,23 +21,40 @@ link_form.addEventListener("click", () => {
 
 const d = document;
 const botones = document.querySelectorAll(".containerCard");
-const btn_edit = document.querySelectorAll(".edit");
 
 botones.forEach((boton) => {
   boton.addEventListener("click", (event) => {
     event.stopPropagation();
-
-    const instancias = document.querySelectorAll(".click");
-    instancias.forEach((instancia) => {
-      if (!instancia) {
-        instancia.classList.remove("click");
-      }
-    });
-
-    btn_edit.forEach((editButton) => {
-      editButton.classList.remove("off");
-    });
-
-    boton.classList.toggle("click");
+    const carta = document.querySelector(".card-edit");
+    carta.classList.toggle("card-edit-in-actvie")
   });
 });
+
+const btn_cancele = d.querySelector ("#cancele-edit")
+btn_cancele.addEventListener("click", () =>{
+  const carta = document.querySelector(".card-edit");
+  carta.classList.add("card-edit-in-actvie")
+})
+
+const btn_create =d.querySelector("#cancele-create")
+btn_create.addEventListener("click", () => {
+  const btn_form = d.querySelector(".form");
+  btn_form.classList.toggle("in_active");
+})
+
+
+const btn_sumbit = d.querySelector("#btn-submit")
+btn_sumbit.addEventListener("click", () => {
+   const formulario = d.getElementById("create")
+   const inputs = formulario.querySelectorAll("input")
+
+   inputs.forEach(input => {
+    const valor = input.value;
+     const container = d.createElement("div")
+     container.classList = "container-card"
+    container.createElement("p")
+    
+  });
+
+})
+
