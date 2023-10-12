@@ -1,8 +1,13 @@
+:root {
+  --main-color: rgb(99, 165, 251);
+  --default-animation: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Pixelify Sans', sans-serif;
+  font-family: "Pixelify Sans", sans-serif;
 }
 
 html {
@@ -10,7 +15,10 @@ html {
   transition-duration: 0.5s;
 }
 
-img, h1, p, input {
+img,
+h1,
+p,
+input {
   width: inherit;
   height: inherit;
   padding: 0;
@@ -55,7 +63,6 @@ body {
   width: 3.5rem;
 }
 
-
 .containerOne {
   width: 100%;
   text-align: center;
@@ -78,7 +85,7 @@ body {
   display: flex;
 }
 
-nav {
+aside {
   position: fixed;
   left: -16rem;
   top: 5.8rem;
@@ -98,7 +105,8 @@ nav {
   transition: 0.5s ease-in-out;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -106,22 +114,22 @@ ul, ol {
   left: 0;
 }
 
-nav li {
+aside li {
+  color: aliceblue;
   padding: 2rem;
   display: inline-block;
-}
-
-nav li a {
-  color: aliceblue;
-  text-decoration-line: none;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transform: scale(0);
 }
 
-nav li a:hover {
-  font-size: 2.3rem;
+aside li:hover {
+  /* font-size: 2.3rem; */
   color: rgb(105, 108, 112);
-  transform: scale(2);
+  transform: scale(1.1);
+}
+
+aside li a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .containerCard {
@@ -136,9 +144,8 @@ nav li a:hover {
   background-color: rgb(43, 42, 42);
 }
 
-.btn-card {
-  
-}
+/* .btn-card {
+} */
 
 #btn-card {
   top: 5.8rem;
@@ -172,7 +179,9 @@ footer {
   height: inherit;
 }
 
-#menu-icon, #menu-icon::after, #menu-icon::before {
+#menu-icon,
+#menu-icon::after,
+#menu-icon::before {
   background-color: rgb(255, 255, 255);
 }
 
@@ -194,7 +203,7 @@ main {
   padding: 4px 15px;
   background-color: rgb(255, 255, 255);
   border-radius: 6px;
-  box-shadow:2px 3px 1px #151515;
+  box-shadow: 2px 3px 1px #151515;
 }
 
 .form button:hover {
@@ -204,7 +213,7 @@ main {
 
 #create {
   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  padding: 0.1rem 1rem 1rem 1rem ;
+  padding: 0.1rem 1rem 1rem 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -234,7 +243,6 @@ main {
   position: fixed;
   z-index: 1002;
   top: 5rem;
-
 }
 
 .click img {
@@ -242,10 +250,9 @@ main {
 }
 
 .edit {
-display: flex;
-justify-content: center;
-transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-
+  display: flex;
+  justify-content: center;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .off {
@@ -263,7 +270,6 @@ transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   top: 4rem;
   position: fixed;
   border-radius: 1rem;
-
 }
 
 #edit input {
@@ -274,7 +280,7 @@ transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   input {
     padding: 0.6rem;
   }
-  nav {
+  aside {
     position: fixed;
     left: 0;
   }
@@ -282,7 +288,7 @@ transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   .contenido {
     margin-left: 16.5rem;
   }
-  
+
   .containerCard img {
     width: 16rem;
   }
@@ -318,4 +324,65 @@ transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   footer {
     margin-left: 16rem;
   }
+}
+
+.card-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(40, 40, 40);
+  padding: 1rem;
+}
+
+.card-edit-description p {
+  margin-top: 0.5rem;
+}
+
+.card-edit-img {
+  width: 100%;
+  height: 10rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  contain: content;
+}
+
+.card-edit-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.card-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.card-edit-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: rgb(89, 89, 89);
+  color: white;
+}
+
+.card-edit-form button {
+  background-color: var(--main-color);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: var(--default-animation);
+  font-size: 1.1rem;
+}
+
+.card-edit-form button:hover {
+  border: 1px solid var(--main-color);
+  background-color: rgb(89, 89, 89);
+  color: white;
 }
