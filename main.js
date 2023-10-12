@@ -2,14 +2,16 @@ import "./style.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector("nav");
-  navbarToggle = document.querySelector(".containerOne");
-  const menuBtn = document.querySelector(".hamburger-box");
+  const navbarToggle = document.querySelector(".containerOne");
+  const menuBtn = document.querySelector(".hamburger");
 
   menuBtn.addEventListener("click", () => {
     overlay.classList.toggle("is-open");
-    menuBtn.parentElement.classList.toggle("is-active");
+    navbarToggle.classList.toggle("is-active");
+    menuBtn.classList.toggle("is-active")
   });
 });
+
 
 
 const link_form = document.querySelector(".crear_cuadro")
@@ -19,34 +21,25 @@ link_form.addEventListener("click", () => {
 btn_form.classList.toggle("in_active")
 })
 
+const d = document;
+const botones = document.querySelectorAll(".containerCard");
+  const btn_edit = document.querySelectorAll(".edit");
 
-const api = "https://jsonplaceholder.typicode.com/users"
-
-fetch(api)
-  .then (response => response.json())
-  .then (data => {
-
-    console.log(data);
-  })
-
-  .catch(error => {
-    console.error('Error al obtener datos:', error);
-  });
-
-  const d = document;
-  const botones = d.querySelectorAll(".containerCard");
-  const edit = d.querySelectorAll(".btn-card")
-  
   botones.forEach(boton => {
-    boton.addEventListener("click", () => {
-      const instancias = d.querySelectorAll(".click");
+    boton.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      const instancias = document.querySelectorAll(".click");
       instancias.forEach(instancia => {
-        if (instancia !== boton) {
+        if (!instancia) {
           instancia.classList.remove("click");
         }
       });
-  
+
+      btn_edit.forEach(editButton => {
+        editButton.classList.remove("off");
+      });
+
       boton.classList.toggle("click");
     });
   });
- 
