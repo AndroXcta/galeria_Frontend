@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const d = document;
 const link_form = document.querySelector(".crear_cuadro");
 const btn_form = document.querySelector(".form");
+const botones = document.querySelectorAll(".containerCard");
+botones.forEach((boton) => {
 
 link_form.addEventListener("click", () => {
   btn_form.classList.toggle("in_active");
 });
 
-const d = document;
-const botones = document.querySelectorAll(".containerCard");
 
-botones.forEach((boton) => {
   boton.addEventListener("click", (event) => {
     event.stopPropagation();
     const carta = document.querySelector(".card-edit");
@@ -50,11 +50,22 @@ btn_sumbit.addEventListener("click", () => {
 
    inputs.forEach(input => {
     const valor = input.value;
-     const container = d.createElement("div")
-     container.classList = "container-card"
-    container.createElement("p")
-    
-  });
+    const container = d.createElement("div");
+    container.classList = "container-card";
+    container.innerHTML = `
+        <div class="btn-card">
+            <button id="btn-card">x</button>
+        </div>
+        <img src="./public/dragon_ball.jpg" alt="" />
+        <div class="content">
+            <p>${valor}</p>
+            <p>aqui iria el estudio</p>
+            <p>aqui iria la besto waifu</p>
+        </div>
+    `;
+    formulario.appendChild(container);
+});
+
 
 })
 

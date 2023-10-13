@@ -212,6 +212,7 @@ main {
 }
 
 #create {
+  gap: 0.2rem;
   border-radius: 1rem;
   box-shadow: 1rem 1rem 1rem #041736;
   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -221,12 +222,17 @@ main {
   flex-direction: column;
   background: linear-gradient(90deg, #020024 3%, #041736 35%, #020024 98%);
   position: fixed;
-  top: 10rem;
+  top: 1%;
   z-index: 1001;
 }
 
+#create input {
+  border-radius: 0.4rem;
+  padding: 0.6rem;
+}
+
 #create button{
-  margin: 1rem;
+  margin: 0.5rem;
   color: #0037ff;
   padding: 4px 15px;
   background-color: rgb(255, 255, 255);
@@ -241,6 +247,11 @@ main {
   color: #c6c7cb;
 }
 
+#cancele-create {
+  position: relative;
+  top: -1rem;
+  left: -12rem;
+}
 
 
 #tu_propio_cuadro {
