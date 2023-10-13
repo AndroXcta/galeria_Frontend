@@ -172,11 +172,7 @@
                 <label for="bestWaifu">Best Waifu:</label>
                 <input type="text" id="bestWaifu" name="bestWaifu" />
                 <label for="codigoObra">Código de Obra:</label>
-                <input
-                  type="text"
-                  id="codigoObra"
-                  name="codigoObra"
-                />
+                <input type="text" id="codigoObra" name="codigoObra" />
                 <label for="image">Imagen(url)</label>
                 <input type="url" />
                 <button id="btn-submit" type="submit">Guardar</button>
@@ -184,9 +180,10 @@
             </div>
           </div>
         </section>
-        <div class="card-edit">
+        <div class="card-edit card-edit-in-actvie">
           <div class="card-edit-description">
             <button id="cancele-edit">x</button>
+            <button id="delete-card">Delete</button>
             <div class="card-edit-img">
               <img src="./public/dragon_ball.jpg" alt="" />
             </div>
@@ -235,6 +232,7 @@
           </form>
         </div>
       </div>
+      <div class="delete-card"></div>
     </main>
     <footer>
       <section id="Contactanos">

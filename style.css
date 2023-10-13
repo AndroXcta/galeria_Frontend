@@ -222,7 +222,7 @@ main {
   flex-direction: column;
   background: linear-gradient(90deg, #020024 3%, #041736 35%, #020024 98%);
   position: fixed;
-  top: 1%;
+  top: 10%;
   z-index: 1001;
 }
 
@@ -231,7 +231,7 @@ main {
   padding: 0.6rem;
 }
 
-#create button{
+#create button {
   margin: 0.5rem;
   color: #0037ff;
   padding: 4px 15px;
@@ -241,7 +241,7 @@ main {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-#create button:hover{
+#create button:hover {
   background-color: #151515;
   font-size: 1rem;
   color: #c6c7cb;
@@ -252,7 +252,6 @@ main {
   top: -1rem;
   left: -12rem;
 }
-
 
 #tu_propio_cuadro {
   padding: 10px;
@@ -307,8 +306,12 @@ main {
   margin: 10px;
 }
 
-
 .card-edit {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 1001;
+  position: fixed;
+  top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -319,7 +322,7 @@ main {
   padding: 1rem;
 }
 
-.card-edit-description button{
+.card-edit-description button {
   margin: 0.5rem;
   width: 2rem;
   background-color: var(--main-color);
@@ -383,9 +386,6 @@ main {
   color: white;
 }
 
-
-
-
 @media (min-width: 600px) {
   input {
     padding: 0.6rem;
@@ -438,16 +438,18 @@ main {
     display: flex;
     flex-direction: row;
   }
-.card-edit-img{
-  height: 24rem;
-}
-.card-edit-description button{
-  margin: 0.5rem;
-  height: 2.5rem;
-  width: 4rem;
+  .card-edit-img {
+    height: 24rem;
+  }
+  .card-edit-description button {
+    margin: 0.5rem;
+    height: 2.5rem;
+    width: 4rem;
   }
 }
 
 .card-edit-in-actvie {
   display: none;
+  opacity: 0;
+  transform: translateY(-100%);
 }
