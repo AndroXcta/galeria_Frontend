@@ -10,79 +10,22 @@
   font-family: "Pixelify Sans", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-  transition-duration: 0.5s;
+aside li {
+  color: aliceblue;
+  padding: 2rem;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-img,
-h1,
-p,
-input {
-  width: inherit;
-  height: inherit;
-  padding: 0;
-  margin: 0;
-  border: 0;
+aside li:hover {
+  /* font-size: 2.3rem; */
+  color: rgb(105, 108, 112);
+  transform: scale(1.1);
 }
 
-h1 {
-  font-size: 1.3rem;
-  padding: 5px;
-}
-
-h2 {
-  color: white;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-
-body {
-  color: rgb(99, 165, 251);
-  background-image: url(./public/fondo.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  background-size: cover;
-}
-
-.information {
-  width: 95%;
-  padding: 10px;
-  background-color: black;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-}
-
-.imagen {
-  width: 3.5rem;
-}
-
-.containerOne {
-  width: 100%;
-  text-align: center;
-  z-index: 1000;
-  position: fixed;
-  background-color: rgb(0, 0, 0);
-  border-radius: 0px 0px 20px 20px;
-  top: 0;
-  left: 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.search {
-  display: flex;
+aside li a {
+  color: inherit;
+  text-decoration: none;
 }
 
 aside {
@@ -105,47 +48,15 @@ aside {
   transition: 0.5s ease-in-out;
 }
 
-ul,
-ol {
-  list-style: none;
-}
-
-.is-open {
-  left: 0;
-}
-
-aside li {
-  color: aliceblue;
-  padding: 2rem;
-  display: inline-block;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-aside li:hover {
-  /* font-size: 2.3rem; */
-  color: rgb(105, 108, 112);
-  transform: scale(1.1);
-}
-
-aside li a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.containerCard {
-  margin: 0.5rem;
-  padding: 0.9rem;
+body {
+  color: rgb(99, 165, 251);
+  background-image: url(./public/fondo.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
-  background-color: black;
-  border-radius: 0.5rem;
+  background-size: cover;
 }
-.containerCard:hover {
-  background-color: rgb(43, 42, 42);
-}
-
-/* .btn-card {
-} */
 
 #btn-card {
   top: 5.8rem;
@@ -157,58 +68,40 @@ aside li a {
   background-color: rgb(13, 42, 122);
 }
 
-.content {
-  display: flex;
-  justify-content: space-around;
+.containerOne {
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+  position: fixed;
+  background-color: rgb(0, 0, 0);
+  border-radius: 0px 0px 20px 20px;
+  top: 0;
+  left: 0;
 }
 
-footer {
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.containerCard {
+  margin: 0.5rem;
+  padding: 0.9rem;
   display: flex;
   flex-direction: column;
   background-color: black;
+  border-radius: 0.5rem;
 }
 
-.links {
-  width: 2rem;
-  display: flex;
-  flex-direction: row;
+.containerCard:hover {
+  background-color: rgb(43, 42, 42);
 }
 
-.links a {
-  width: inherit;
-  height: inherit;
-}
-
-#menu-icon,
-#menu-icon::after,
-#menu-icon::before {
-  background-color: rgb(255, 255, 255);
-}
-
-main {
-  padding: 100px 10px;
-}
-
-.form {
+.content {
   display: flex;
   justify-content: space-around;
-}
-
-.in_active {
-  display: none;
-}
-
-.form button {
-  color: #0037ff;
-  padding: 4px 15px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 6px;
-  box-shadow: 2px 3px 1px #151515;
-}
-
-.form button:hover {
-  font-size: 1rem;
-  color: #04144e;
 }
 
 #create {
@@ -253,13 +146,6 @@ main {
   left: -12rem;
 }
 
-#tu_propio_cuadro {
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 0.5rem;
-  text-align: center;
-}
-
 #Contactanos {
   display: flex;
   flex-direction: column;
@@ -279,47 +165,20 @@ main {
   width: 20rem;
 }
 
-.edit {
-  display: flex;
-  justify-content: center;
-  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.off {
-  display: none;
-}
-
-#edit {
-  align-items: center;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-  padding: 10px;
-  background-color: #151515;
-  top: 4rem;
-  position: fixed;
-  border-radius: 1rem;
-}
-
-#edit input {
-  margin: 10px;
-}
-
 .card-edit {
   opacity: 1;
   transform: translateY(0);
   z-index: 1001;
   position: fixed;
-  top: 5rem;
+  top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   border-radius: 0.5rem;
   background-color: rgb(40, 40, 40);
-  padding: 1rem;
+ padding: 0.3rem 1rem 1rem;
 }
 
 .card-edit-description button {
@@ -331,11 +190,13 @@ main {
   padding: 0.5rem;
   transition: var(--default-animation);
 }
+
 .card-edit-description button:hover {
   border: 1px solid var(--main-color);
   background-color: rgb(89, 89, 89);
   color: white;
 }
+
 .card-edit-description p {
   margin-top: 0.5rem;
 }
@@ -358,8 +219,12 @@ main {
 .card-edit-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 100%;
+  gap: 0.5rem;
+  width: 95%;
+}
+
+.card-edit-form input {
+  height: 0.5rem;
 }
 
 .card-edit-form input {
@@ -386,7 +251,153 @@ main {
   color: white;
 }
 
+.edit {
+  display: flex;
+  justify-content: center;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#edit {
+  align-items: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  padding: 10px;
+  background-color: #151515;
+  top: 4rem;
+  position: fixed;
+  border-radius: 1rem;
+}
+
+#edit input {
+  margin: 10px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+.form button {
+  color: #0037ff;
+  padding: 4px 15px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 2px 3px 1px #151515;
+}
+
+.form button:hover {
+  font-size: 1rem;
+  color: #04144e;
+}
+
+.form {
+  display: flex;
+  justify-content: space-around;
+}
+
+h1,
+
+h1 {
+  font-size: 1.3rem;
+  padding: 5px;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  transition-duration: 0.5s;
+}
+
+img,
+
+p,
+input {
+  width: inherit;
+  height: inherit;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+
+.information {
+  width: 95%;
+  padding: 10px;
+  background-color: black;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.imagen {
+  width: 3.5rem;
+}
+
+.search {
+  display: flex;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.is-open {
+  left: 0;
+}
+
+.links {
+  width: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.links a {
+  width: inherit;
+  height: inherit;
+}
+
+#menu-icon,
+#menu-icon::after,
+#menu-icon::before {
+  background-color: rgb(255, 255, 255);
+}
+
+main {
+  padding: 100px 10px;
+}
+
+.in_active {
+  display: none;
+}
+
+#tu_propio_cuadro {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.off {
+  display: none;
+}
+
 @media (min-width: 600px) {
+  .card-edit {
+    height: 95%;
+    width: 70%;
+  }
   input {
     padding: 0.6rem;
   }
@@ -445,6 +456,15 @@ main {
     margin: 0.5rem;
     height: 2.5rem;
     width: 4rem;
+  }
+  
+  .card-edit-form input {
+    height: 2rem;
+  }
+
+  .card-edit-form {
+    gap: 1rem;
+    width: 100%;
   }
 }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./public/alj_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Sakura Spectrum</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css"
@@ -97,9 +97,7 @@
         </section>
         <section id="cartas">
           <div class="containerCard">
-            <div class="btn-card">
-              <button id="btn-card">x</button>
-            </div>
+            <div class="btn-card"></div>
             <img src="./public/dragon_ball.jpg" alt="" />
             <div class="content">
               <p>aqui iria el nombre</p>
@@ -108,9 +106,7 @@
             </div>
           </div>
           <div class="containerCard">
-            <div class="btn-card">
-              <button id="btn-card">x</button>
-            </div>
+            <div class="btn-card"></div>
             <img src="./public/naruto.jpeg" alt="" />
             <div class="content">
               <p>Nombre: Naruto Uzumaki</p>
@@ -119,9 +115,7 @@
             </div>
           </div>
           <div class="containerCard">
-            <div class="btn-card">
-              <button id="btn-card">x</button>
-            </div>
+            <div class="btn-card"></div>
             <div class="img"></div>
             <img src="./public/onepiece.jpg" alt="" />
             <div class="content">
@@ -162,19 +156,18 @@
                 <label for="sinopsis">Sinopsis: </label>
                 <textarea
                   id="sinopsis"
-                  required
                   name="sinopsis"
                   rows="4"
                   cols="50"
                 ></textarea>
                 <label for="linkAnime">Link del Anime:</label>
-                <input type="text" id="linkAnime" name="linkAnime" />
+                <input type="url" id="linkAnime" name="linkAnime" />
                 <label for="bestWaifu">Best Waifu:</label>
-                <input type="text" id="bestWaifu" name="bestWaifu" />
+                <input type="text" required id="bestWaifu" name="bestWaifu" />
                 <label for="codigoObra">Código de Obra:</label>
-                <input type="text" id="codigoObra" name="codigoObra" />
+                <input type="text" id="codigoObra" name="codigo" />
                 <label for="image">Imagen(url)</label>
-                <input type="url" />
+                <input type="url" name="imagen" />
                 <button id="btn-submit" type="submit">Guardar</button>
               </form>
             </div>

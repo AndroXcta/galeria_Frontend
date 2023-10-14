@@ -40,33 +40,101 @@ btn_create.addEventListener("click", () => {
   btn_form.classList.toggle("in_active");
 });
 
-const btn_submit = d.querySelector("#btn-submit");
+// const btn_submit = d.querySelector("#btn-submit");
 
-btn_submit.addEventListener("click", () => {
-  const seccionCartas = d.getElementById("cartas");
-  const formulario = d.getElementById("create");
-  const inputs = formulario.querySelectorAll("input");
+// btn_submit.addEventListener("click", () => {
+//   const seccionCartas = d.getElementById("cartas");
+//   const formulario = d.getElementById("create");
+//   const inputs = formulario.querySelectorAll("input");
 
-  let valor = "";
-  inputs.forEach((input) => {
-    valor += input.value + " ";
-  });
+//   let valor = "";
+//   inputs.forEach((input) => {
+//     valor += input.value + " ";
+//   });
 
-  const container = d.createElement("div");
-  container.classList = "containerCard";
-  console.log(inputs, valor);
-  container.innerHTML = `
-          <div class="btn-card">
-              <button id="btn-card">x</button>
-          </div>
-          <img src="./public/dragon_ball.jpg" alt="" />
-          <div class="content">
-              <p>${valor}</p>
-              <p>aqui iria el estudio</p>
-              <p>aqui iria la besto waifu</p>
-          </div>
-      `;
-  seccionCartas.appendChild(container);
+//   const container = d.createElement("div");
+//   container.classList = "containerCard";
+//   console.log(inputs, valor);
+//   container.innerHTML = `
+//           <div class="btn-card">
+//               <button id="btn-card">x</button>
+//           </div>
+//           <img src="./public/dragon_ball.jpg" alt="" />
+//           <div class="content">
+//               <p>${valor}</p>
+//               <p>aqui iria el estudio</p>
+//               <p>aqui iria la besto waifu</p>
+//           </div>
+//       `;
+//   seccionCartas.appendChild(container);
+// });
+
+const formulario = d.querySelector("#create");
+const espacio = d.querySelector("#cartas");
+
+function crearCuadro(nombre, estudio, bestWaifu) {
+  const containerCard = d.createElement("div");
+  containerCard.classList.add("containerCard");
+  containerCard.innerHTML = `
+      <div class="btn-card">
+          <button id="btn-card">x</button>
+      </div>
+      <img src="./public/dragon_ball.jpg" alt="" />
+      <div class="content">
+          <p>${nombre}</p>
+          <p>${estudio}</p>
+          <p>${bestWaifu}</p>
+      </div>
+  `;
+  return containerCard;
+}
+
+formulario.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const { nombre, estudio, sinopsis, linkAnime, bestWaifu, codigo, imagen } =
+    e.target.elements;
+
+  await fetch("https://hobart-redback-xzed.2.ie-1.fl0.io/cuadros", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nombre: nombre.value,
+      estudio: estudio.value,
+      sinopsis: sinopsis.value || null,
+      link_anime: linkAnime.value || null,
+      best_waifu: bestWaifu.value || null,
+      codigo_obra: codigo.value,
+      imagen: imagen.value || null,
+    }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Error al crear un cuadro");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data)
+      const nuevoCuadro = crearCuadro(
+        data.nombre,
+        data.estudio,
+        data.best_waifu
+      );
+      espacio.appendChild(nuevoCuadro);
+      nombre.value = "";
+      estudio.value = "";
+      sinopsis.value = "";
+      linkAnime.value = "";
+      bestWaifu.value = "";
+      codigo.value = "";
+      imagen.value = "";
+    })
+    .catch((err) => {
+      alert("error al enviar los datos");
+      console.log(err);
+    });
 });
 
 const btn_delete = d.querySelector("#delete-card");
@@ -83,3 +151,17 @@ btn_delete.addEventListener("click", () => {
 
   selector.appendChild(delete_card);
 });
+
+function cambiaContenido() {
+  const miElemento = document.getElementById("delete-card");
+  const width = window.innerWidth;
+
+  if (width <= 600) {
+    miElemento.textContent = "🗑";
+  } else {
+    miElemento.textContent = "delete";
+  }
+}
+
+window.addEventListener("resize", cambiaContenido);
+cambiaContenido();
