@@ -83,3 +83,18 @@ btn_delete.addEventListener("click", () => {
 
   selector.appendChild(delete_card);
 });
+
+
+function cambiaContenido() {
+  const miElemento = document.getElementById('delete-card');
+  const width = window.innerWidth;
+
+  if (width <= 600) {
+    miElemento.textContent = '🗑';
+  } else {
+    miElemento.textContent = 'delete';
+  }
+}
+
+window.addEventListener('resize', cambiaContenido);
+cambiaContenido();
