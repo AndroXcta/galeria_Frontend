@@ -99,6 +99,20 @@ body {
   background-color: rgb(43, 42, 42);
 }
 
+.contaierDelete {
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 8rem;
+  position: fixed;
+  z-index: 1003;
+  top: 15rem;
+  left: 10%;
+  background-color: black;
+  color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
   display: flex;
   justify-content: space-around;
@@ -351,6 +365,31 @@ input {
 ul,
 ol {
   list-style: none;
+}
+
+.options {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.options button {
+  margin: 0.5rem;
+  color: #0037ff;
+  padding: 4px 15px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 2px 3px 1px #151515;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.options button:hover {
+  background-color: #151515;
+  font-size: 1rem;
+  color: #c6c7cb;
 }
 
 .is-open {
