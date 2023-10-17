@@ -192,7 +192,7 @@ body {
   gap: 0.5rem;
   border-radius: 0.5rem;
   background-color: rgb(40, 40, 40);
- padding: 0.3rem 1rem 1rem;
+  padding: 0.3rem 1rem 1rem;
 }
 
 .card-edit-description button {
@@ -313,7 +313,6 @@ footer {
 }
 
 h1,
-
 h1 {
   font-size: 1.3rem;
   padding: 5px;
@@ -331,7 +330,6 @@ html {
 }
 
 img,
-
 p,
 input {
   width: inherit;
@@ -340,7 +338,6 @@ input {
   margin: 0;
   border: 0;
 }
-
 
 .information {
   width: 95%;
@@ -417,7 +414,7 @@ main {
   padding: 100px 10px;
 }
 
-.in_active {
+.form-close {
   display: none;
 }
 
@@ -496,7 +493,7 @@ main {
     height: 2.5rem;
     width: 4rem;
   }
-  
+
   .card-edit-form input {
     height: 2rem;
   }
