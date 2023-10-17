@@ -11,7 +11,7 @@ function pintarCuadros(cuadros) {
     }
     const containerCard = d.createElement("div");
     containerCard.classList.add("containerCard");
-    containerCard.id = cuadro.id_cuadro;
+    containerCard.dataset.id = cuadro.id_cuadro;
     containerCard.innerHTML = `
         <div class="btn-card">
         </div>
@@ -107,10 +107,6 @@ function crearCuadro() {
   });
 }
 
-function modificarCuadro() {}
-
-function eliminarCuadro() {}
-
 function menuHamburguesa() {
   const menuBtn = d.querySelector(".hamburger");
   const navbarToggle = d.querySelector(".containerOne");
@@ -138,93 +134,102 @@ function cerrarFormularioCrearCuadro() {
   });
 }
 
-function abrirFormularioEditarCuadro() {
-
-}
-
-function editarCuadro() {
-    async function obtenerCuadrosPorId(id) {
-      const containerEdit = d.querySelector("card-edit")
-      containerEdit.classList = "card-edit"
-      try {
-        const response = await fetch(
-          `https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`
-        );
-        const cuadro = await response.json();
-        console.log(response);
-        cuadro.forEach((cuadro), () => {
-          if (condition) {
-            
-          }
-          const cardEdit = d.querySelector(".card-edit")
-          cardEdit.classList = "card-edit" 
-          cardEdit.innerHTML = `          <div class="card-edit-description">
-          <button id="cancele-edit">x</button>
-          <button id="delete-card">Delete</button>
-          <div class="card-edit-img">
-            <img src="${cuadro.imagen}" />
-          </div>
-          <p>
-          ${cuadro.sinopsis}
-          </p>
+async function abrirPanelEditar(id) {
+  try {
+    const response = await fetch(
+      `https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`
+    );
+    const cuadro = await response.json();
+      const cardEdit = d.querySelector(".card-edit");
+      cardEdit.classList = "card-edit";
+      const propiedades = cuadro[0]
+      console.log(propiedades.bestWaifu)
+      if (cardEdit) {
+        cardEdit.innerHTML = `<div class="card-edit-description">
+        <button id="cancele-edit">x</button>
+        <button id="delete-card">Delete</button>
+        <div class="card-edit-img">
+          <img src="${cuadro.imagen}" />
         </div>
-        <form class="card-edit-form">
-          <label for="nombre">Nombre:</label>
-          <input
-            type="text"
-            required
-            id="nombre"
-            name="nombre"
-            value="${cuadro.nombre}"
-          />
-          <label for="estudio">Estudio:</label>
-          <input
-            type="text"
-            required
-            id="estudio"
-            name="estudio"
-            value="${cuadro.estudio}"
-          />
-          <label for="sinopsis">Sinopsis:</label>
-          <input
-            id="sinopsis"
-            required
-            name="sinopsis"
-            rows="4"
-            cols="50"
-            value="${cuadro.sinopsis}"
-          />
-          <label for="linkAnime">Link del Anime:</label>
-          <input type="text" id="linkAnime" name="linkAnime" value="${cuadro.linkAnime}" />
-          <label for="bestWaifu">Best Waifu:</label>
-          <input type="text" id="bestWaifu" name="bestWaifu" Value="${cuadro.bestWaifu}" />
-          <label for="codigoObra">Código de Obra:</label>
-          <input type="text" id="codigoObra" name="codigoObra" value="${cuadro.codigo_obra}" />
-          <label for="image">Imagen(url)</label>
-          <input type="url" />
-          <button type="submit">Guardar</button>
-        </form>`
-        })
-    
-      } catch (error) {
-        alert("Error: No se reconoce el cuadro. " + error.message);
+        <p>
+        ${cuadro.sinopsis}
+        </p>
+      </div>
+      <form class="card-edit-form">
+        <label for="nombre">Nombre:</label>
+        <input
+          type="text"
+          required
+          id="nombre"
+          name="nombre"
+          value="${cuadro.nombre}"
+        />
+        <label for="estudio">Estudio:</label>
+        <input
+          type="text"
+          required
+          id="estudio"
+          name="estudio"
+          value="${cuadro.estudio}"
+        />
+        <label for="sinopsis">Sinopsis:</label>
+        <input
+          id="sinopsis"
+          required
+          name="sinopsis"
+          rows="4"
+          cols="50"
+          value="${cuadro.sinopsis}"
+        />
+        <label for="linkAnime">Link del Anime:</label>
+        <input type="text" id="linkAnime" name="linkAnime" value="${cuadro.linkAnime}" />
+        <label for="bestWaifu">Best Waifu:</label>
+        <input type="text" id="bestWaifu" name="bestWaifu" Value="${cuadro.bestWaifu}" />
+        <label for="codigoObra">Código de Obra:</label>
+        <input type="text" id="codigoObra" name="codigoObra" value="${cuadro.codigo_obra}" />
+        <label for="image">Imagen(url)</label>
+        <input type="url" />
+        <button type="submit">Guardar</button>
+      </form>`
       }
-    }
+      else {
+        console.error("no se encontro el cuadro")
+      }
+
+  } catch (error) {
+    alert("Error: No se reconoce el cuadro. " + error.message);
+  }
 }
 
+async function abrirFormularioEditarCuadro() {
+  const containerCard = document.querySelectorAll(".containerCard");
+  
+  containerCard.forEach((sel) => {
+    sel.addEventListener("click", async (e) => {
+      const item = e.target.closest(".containerCard");
+      const id = item.dataset.id;
+      abrirPanelEditar(id);
+      console.log(`https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`);
+    });
+  });
+}
 
-
-
+function eliminarCuadro() {
+  const btn_delete = d.getElementById("delete-card")
+  btn_delete.addEventListener("click", async () => {
+    console.log("esta funcionando")
+  })
+}
 
 // Evento DOMContentLoaded se dispara cuando el documento HTML ha sido completamente cargado y parseado
-d.addEventListener("DOMContentLoaded", () => {
+d.addEventListener("DOMContentLoaded", async() => {
   menuHamburguesa();
-  obtenerCuadros("https://galeria-androxcta.1.ie-1.fl0.io/cuadros");
+  await obtenerCuadros("https://galeria-androxcta.1.ie-1.fl0.io/cuadros");
   abrirFormularioCrearCuadro();
   cerrarFormularioCrearCuadro();
   crearCuadro();
-  abrirFormularioEditarCuadro();
-  editarCuadro()
+  await abrirFormularioEditarCuadro(); 
+  eliminarCuadro()
 });
 
 // const d = document;
