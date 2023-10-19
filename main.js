@@ -220,6 +220,8 @@ async function eliminarCuadro() {
   })
 }
 
+//hice algo
+
 // Evento DOMContentLoaded se dispara cuando el documento HTML ha sido completamente cargado y parseado
 d.addEventListener("DOMContentLoaded", async() => {
   menuHamburguesa();
