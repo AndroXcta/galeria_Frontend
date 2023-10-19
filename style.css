@@ -69,6 +69,7 @@ body {
 }
 
 .containerOne {
+  height: 5rem;
   width: 100%;
   text-align: center;
   z-index: 1000;
@@ -87,6 +88,7 @@ body {
 }
 
 .containerCard {
+  justify-content: space-between;
   margin: 0.5rem;
   padding: 0.9rem;
   display: flex;
@@ -180,6 +182,7 @@ body {
 }
 
 .card-edit {
+  left: 16%;
   opacity: 1;
   transform: translateY(0);
   z-index: 1001;
@@ -371,6 +374,12 @@ ol {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.options-in-actvie {
+  display: none;
+  opacity: 0;
+  transform: translateY(-100%);
 }
 
 .options button {

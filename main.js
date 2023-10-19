@@ -1,5 +1,6 @@
 import "./style.css";
 const d = document;
+const cardEdit = d.querySelector(".card-edit");
 
 function pintarCuadros(cuadros) {
   const contenedor = d.querySelector("#cartas");
@@ -134,17 +135,17 @@ function cerrarFormularioCrearCuadro() {
   });
 }
 
-async function abrirPanelEditar(id) {
+async function abrirPanelEditar(id,elemento) {
   try {
     const response = await fetch(
       `https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`
     );
     const cuadro = await response.json();
-      const cardEdit = d.querySelector(".card-edit");
-      cardEdit.classList = "card-edit";
-      if (cardEdit) {
-        const propiedades = cuadro[0]
-        cardEdit.innerHTML = `<div class="card-edit-description">
+    const cardEdit = d.querySelector(".card-edit");
+    cardEdit.classList = "card-edit";
+    if (cardEdit) {
+      const propiedades = cuadro[0];
+      cardEdit.innerHTML = `<div class="card-edit-description">
         <button id="cancele-edit">x</button>
         <button id="delete-card">Delete</button>
         <div class="card-edit-img">
@@ -189,12 +190,29 @@ async function abrirPanelEditar(id) {
         <label for="image">Imagen(url)</label>
         <input type="url" />
         <button type="submit">Guardar</button>
-      </form>`
-      }
-      else {
-        console.error("no se encontro el cuadro")
-      }
+      </form>`;
 
+      function cancelarEliminar() {
+        const canceleDelete = d.getElementById("cancele-edit");
+        canceleDelete.addEventListener("click", () => {
+          cardEdit.classList += " card-edit-in-actvie";
+        });
+      }
+      cancelarEliminar();
+
+      function confirmarEliminarCuadro() {
+        const btn_delete = d.getElementById("delete-card");
+        btn_delete.addEventListener("click", () => {
+          const confirmDelete = d.querySelector(".contaierDelete");
+          confirmDelete.classList = "contaierDelete";
+        });
+      }
+      confirmarEliminarCuadro();
+
+      eliminarCuadro(id,elemento);
+    } else {
+      console.error("no se encontro el cuadro");
+    }
   } catch (error) {
     alert("Error: No se reconoce el cuadro. " + error.message);
   }
@@ -202,33 +220,57 @@ async function abrirPanelEditar(id) {
 
 async function abrirFormularioEditarCuadro() {
   const containerCard = document.querySelectorAll(".containerCard");
-  
   containerCard.forEach((sel) => {
     sel.addEventListener("click", (e) => {
       const item = e.target.closest(".containerCard");
       const id = item.dataset.id;
-      abrirPanelEditar(id);
+      abrirPanelEditar(id,item);
       console.log(`https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`);
     });
   });
 }
 
-async function eliminarCuadro() {
-  const btn_delete = d.getElementById("delete-card")
-  btn_delete.addEventListener("click", () => {
-    console.log("esta funcionando")
-  })
+function cambiaContenido() {
+  const width = window.innerWidth;
+  const miElemento = d.querySelector("#delete-card");
+  if (width <= 600) {
+    miElemento.textContent = "🗑";
+  } else {
+    miElemento.textContent = "delete";
+  }
 }
 
-//hice algo
+function eliminarCuadro(id,elemento) {
+  try {
+    const btnConfirm = d.getElementById("confirmDelete");
+    btnConfirm.addEventListener("click", async (i) => {
+      const chupala = elemento;
+      const id_item = elemento.dataset.id;
+
+      const response = fetch(
+        `https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id_item}`,
+        {
+          method: "DELETE",
+        }
+      ).then(() => {
+        if (!response.ok) {
+          throw new Error("Error al eliminar el cuadro");
+        }
+        location.reload();
+        chupala.remove();
+      });
+    });
+  } catch (error) {
+    alert("Error: No se pudo eliminar el cuadro. " + error.message);
+  }
+}
 
 // Evento DOMContentLoaded se dispara cuando el documento HTML ha sido completamente cargado y parseado
-d.addEventListener("DOMContentLoaded", async() => {
+d.addEventListener("DOMContentLoaded", async () => {
   menuHamburguesa();
   await obtenerCuadros("https://galeria-androxcta.1.ie-1.fl0.io/cuadros");
   abrirFormularioCrearCuadro();
   cerrarFormularioCrearCuadro();
   crearCuadro();
-  await abrirFormularioEditarCuadro(); 
-  eliminarCuadro()
+  abrirFormularioEditarCuadro();
 });
