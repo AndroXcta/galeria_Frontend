@@ -154,6 +154,8 @@ async function abrirPanelEditar(id,elemento) {
         <p>
         ${propiedades.sinopsis}
         </p>
+        <a href="${propiedades.link_anime}" target="_blank" >puedes ver este anime dando click aqui</a>
+
       </div>
       <form class="card-edit-form">
         <label for="nombre">Nombre:</label>
@@ -207,9 +209,15 @@ async function abrirPanelEditar(id,elemento) {
           confirmDelete.classList = "contaierDelete";
         });
       }
-      confirmarEliminarCuadro();
 
+      function editarContenidoCuadro () {
+        
+      }
+
+      confirmarEliminarCuadro();
       eliminarCuadro(id,elemento);
+      cancelarConfirmcuadro()
+
     } else {
       console.error("no se encontro el cuadro");
     }
@@ -264,6 +272,31 @@ function eliminarCuadro(id,elemento) {
     alert("Error: No se pudo eliminar el cuadro. " + error.message);
   }
 }
+
+function cancelarConfirmcuadro () {
+  const btn_cancele = d.getElementById("canceleDelete")
+  btn_cancele.addEventListener("click", () => {
+    location.reload()
+    alert("elimiacion cancelada")
+  }) 
+}
+
+async function editarCuadro (id, elemento) {
+  try {
+    const response = await fetch ( `https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`, {
+      method: "PUT",
+      body: bodyContent,
+       headers: headersList
+    }) 
+
+    let data = await response.text();
+    console.log(data);
+
+  } catch (error) {
+    
+  }
+}
+
 
 // Evento DOMContentLoaded se dispara cuando el documento HTML ha sido completamente cargado y parseado
 d.addEventListener("DOMContentLoaded", async () => {
