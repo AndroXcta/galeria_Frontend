@@ -1,6 +1,7 @@
 import "./style.css";
 const d = document;
 const cardEdit = d.querySelector(".card-edit");
+const cartas = d.querySelectorAll(".containerCard")
 
 function pintarCuadros(cuadros) {
   const contenedor = d.querySelector("#cartas");
@@ -100,6 +101,7 @@ function crearCuadro() {
       imagen.value = "";
       containerForm.classList.add("form-close");
       alert("Cuadro creado con exito");
+      location.reload()
     } catch (error) {
       alert(error);
       alert("Error al enviar los datos, no se pudo crear el cuadro");
@@ -147,6 +149,7 @@ async function abrirPanelEditar(id,elemento) {
       cardEdit.innerHTML = `<div class="card-edit-description">
         <button id="cancele-edit">x</button>
         <button id="delete-card">Delete</button>
+        <p id="comparador"> ${propiedades.id_cuadro} </p>
         <div class="card-edit-img">
           <img src="${propiedades.imagen}"  />
         </div>
@@ -197,7 +200,7 @@ async function abrirPanelEditar(id,elemento) {
         const formulario = d.querySelector(".card-edit-form")
         formulario.addEventListener("submit", (e) => {
           e.preventDefault()
-          id = d.querySelector(".containerCard").dataset.id
+          id = d.getElementById("comparador").textContent
 
           nuevosDatos = {
             nombre : formulario.nombre.value,
@@ -231,7 +234,7 @@ async function abrirPanelEditar(id,elemento) {
           confirmDelete.classList = "contaierDelete";
         });
       }
-      
+
       confirmarEliminarCuadro();
       eliminarCuadro(id,elemento);
       cancelarConfirmcuadro()
@@ -319,7 +322,6 @@ async function editarCuadro(id, nuevosDatos) {
     throw error;
   }
 }
-
 
 
 // Evento DOMContentLoaded se dispara cuando el documento HTML ha sido completamente cargado y parseado
