@@ -180,16 +180,16 @@ async function abrirPanelEditar(id,elemento) {
           name="sinopsis"
           rows="4"
           cols="50"
-          value="${propiedades.sinopsis || "aun no hay sinopsis"}"
+          value="${propiedades.sinopsis}"
         />
         <label for="linkAnime">Link del Anime:</label>
-        <input type="text" id="linkAnime" name="linkAnime" value="${propiedades.link_anime || "aun no hay link"}"  />
+        <input type="text" id="linkAnime" name="linkAnime" value="${propiedades.link_anime}"  />
         <label for="bestWaifu">Best Waifu:</label>
         <input type="text" id="bestWaifu" name="bestWaifu" Value="${propiedades.best_waifu}" />
         <label for="codigoObra">Código de Obra:</label>
-        <input type="text" id="codigoObra" name="codigoObra" value="${propiedades.codigo_obra || "aun no hya codigo"}" />
+        <input type="text" id="codigoObra" name="codigoObra" value="${propiedades.codigo_obra}" />
         <label for="image">Imagen(url)</label>
-        <input type="url" />
+        <input type="url" name="imagen" value="${propiedades.imagen}" />
         <button id="btnUpdate" type="submit">Guardar</button>
       </form>`;
 
@@ -202,11 +202,11 @@ async function abrirPanelEditar(id,elemento) {
           nuevosDatos = {
             nombre : formulario.nombre.value,
             estudio : formulario.estudio.value,
-            sinopsis : formulario.sinopsis.value,
-            linkAnime : formulario.link_anime,
-            best_waifu : formulario.bestWaifu,
-            codigo_obra : formulario.codigo_obra,
-            imagen : formulario.imagen
+            sinopsis : formulario.sinopsis.value || "aun no hay sinopsis" ,
+            linkAnime : formulario.linkAnime.value || "aun no hay link" ,
+            best_waifu : formulario.bestWaifu.value,
+            codigo_obra : formulario.codigoObra.value || "aun no hay codigo" ,
+            imagen : formulario.imagen.value
           }
           editarCuadro(id, nuevosDatos)
           alert("cuadro editado exitosamente")
