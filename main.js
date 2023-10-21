@@ -44,7 +44,6 @@ async function obtenerCuadros(api) {
 function crearCuadro() {
   const form = d.querySelector("#create");
   const containerForm = d.querySelector(".form");
-
   const espacio = d.querySelector("#cartas");
 
   form.addEventListener("submit", async (e) => {
@@ -102,7 +101,7 @@ function crearCuadro() {
       containerForm.classList.add("form-close");
       alert("Cuadro creado con exito");
     } catch (error) {
-      console.log(error);
+      alert(error);
       alert("Error al enviar los datos, no se pudo crear el cuadro");
     }
   });
@@ -181,18 +180,41 @@ async function abrirPanelEditar(id,elemento) {
           name="sinopsis"
           rows="4"
           cols="50"
-          value="${propiedades.sinopsis}"
+          value="${propiedades.sinopsis || "aun no hay sinopsis"}"
         />
         <label for="linkAnime">Link del Anime:</label>
-        <input type="text" id="linkAnime" name="linkAnime" value="${propiedades.linkAnime}" />
+        <input type="text" id="linkAnime" name="linkAnime" value="${propiedades.link_anime || "aun no hay link"}"  />
         <label for="bestWaifu">Best Waifu:</label>
-        <input type="text" id="bestWaifu" name="bestWaifu" Value="${propiedades.bestWaifu}" />
+        <input type="text" id="bestWaifu" name="bestWaifu" Value="${propiedades.best_waifu}" />
         <label for="codigoObra">Código de Obra:</label>
-        <input type="text" id="codigoObra" name="codigoObra" value="${propiedades.codigo_obra}" />
+        <input type="text" id="codigoObra" name="codigoObra" value="${propiedades.codigo_obra || "aun no hya codigo"}" />
         <label for="image">Imagen(url)</label>
         <input type="url" />
-        <button type="submit">Guardar</button>
+        <button id="btnUpdate" type="submit">Guardar</button>
       </form>`;
+
+      function actulizarDatos (id, nuevosDatos) {
+        const formulario = d.querySelector(".card-edit-form")
+        formulario.addEventListener("submit", (e) => {
+          e.preventDefault()
+          id = d.querySelector(".containerCard").dataset.id
+
+          nuevosDatos = {
+            nombre : formulario.nombre.value,
+            estudio : formulario.estudio.value,
+            sinopsis : formulario.sinopsis.value,
+            linkAnime : formulario.link_anime,
+            best_waifu : formulario.bestWaifu,
+            codigo_obra : formulario.codigo_obra,
+            imagen : formulario.imagen
+          }
+          editarCuadro(id, nuevosDatos)
+          alert("cuadro editado exitosamente")
+          location.reload()
+        })
+      }
+            
+      actulizarDatos()
 
       function cancelarEliminar() {
         const canceleDelete = d.getElementById("cancele-edit");
@@ -209,11 +231,7 @@ async function abrirPanelEditar(id,elemento) {
           confirmDelete.classList = "contaierDelete";
         });
       }
-
-      function editarContenidoCuadro () {
-        
-      }
-
+      
       confirmarEliminarCuadro();
       eliminarCuadro(id,elemento);
       cancelarConfirmcuadro()
@@ -233,7 +251,6 @@ async function abrirFormularioEditarCuadro() {
       const item = e.target.closest(".containerCard");
       const id = item.dataset.id;
       abrirPanelEditar(id,item);
-      console.log(`https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`);
     });
   });
 }
@@ -281,21 +298,28 @@ function cancelarConfirmcuadro () {
   }) 
 }
 
-async function editarCuadro (id, elemento) {
+async function editarCuadro(id, nuevosDatos) {
   try {
-    const response = await fetch ( `https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`, {
-      method: "PUT",
-      body: bodyContent,
-       headers: headersList
-    }) 
+    const response = await fetch(`https://galeria-androxcta.1.ie-1.fl0.io/cuadros/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(nuevosDatos),
+    });
 
-    let data = await response.text();
-    console.log(data);
+    if (!response.ok) {
+      throw new Error('Error al actualizar el cuadro en el servidor');
+    }
 
+    const cuadroActualizado = await response.json();
+    return cuadroActualizado;
   } catch (error) {
-    
+    console.error('Error:', error);
+    throw error;
   }
 }
+
 
 
 // Evento DOMContentLoaded se dispara cuando el documento HTML ha sido completamente cargado y parseado
